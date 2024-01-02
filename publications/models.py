@@ -9,7 +9,9 @@ class Publication(models.Model):
    author = models.ForeignKey("publications.author", null=False, on_delete=models.CASCADE)
    first_published = models.DateField()
 
-   #objects = PublicationManager()
+   views = models.PositiveIntegerField(default=0)
+
+   objects = PublicationManager()
 
    def __str__(self):
        return f"{self.name} - {self.first_published}"
@@ -26,7 +28,7 @@ class Publication(models.Model):
 class Author(models.Model):
    name = models.CharField(max_length=255, blank=False)
    date_of_birth = models.DateField()
-   date_of_death = models.DateField(null=True)
+   date_of_death = models.DateField(null=True, blank=True)
 
    class Meta:
        ordering=["name"]

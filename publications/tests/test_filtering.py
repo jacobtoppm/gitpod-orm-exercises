@@ -12,6 +12,11 @@ class TestFiltering(TestCase):
             name="Sarah Stillalive",
             date_of_birth=date.fromisoformat('2000-12-04')
         )
+        cls.living_author_11 = models.Author.objects.create(
+            name="",
+            date_of_birth=date.fromisoformat('2000-12-04')
+        )
+        cls.living_author_11.full_clean()
         cls.living_author_2 = models.Author.objects.create(
             name="Steve Swearshesnotavampire",
             date_of_birth=date.fromisoformat('1888-11-08')
